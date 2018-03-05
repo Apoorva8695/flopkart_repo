@@ -4,7 +4,7 @@
 <!-- saved from url=(0060)http://www.themesground.com/flipmart-demo/HTML/category.jsp -->
 <html>
 <!-- Meta -->
-
+<!-- minnu ann -->
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, user-scalable=no">
 <meta name="description" content="">
@@ -93,14 +93,8 @@ input:valid ~ .floating-label {
 									<label id="Login_btn"> <a data-toggle="modal"
 										data-target="#loginModal"> Login </a>
 									</label>
-									<input type="submit" id="user_btn" name="user_btn" value="Guest"
-										class="login_user btn btn-link" style="color: white; font-size: 90%;" /> 
-									<input class="login_user" id="firstName" name="firstName" type="text" />
-									<input class="login_user" id="lastName" name="lastName" type="text" /> 
-									<input class="login_user" id="email" name="email" type="text" /> 
-									<input class="login_user" id="phone" name="phone" type="text" /> 
-									<input class="login_user" id="pic_URL" name="pic_URL" type="text" />
-								</form>
+									<input type="submit" id="user_btn" name="user_btn" value="My Account"
+										class="login_user btn btn-link" style="color: white; font-size: 90%;" /> 								</form>
 							</li>
 							<!-- ============================================== Login Modal ============================================== -->
 
@@ -131,6 +125,94 @@ input:valid ~ .floating-label {
 
 											<div class="row"
 												style="padding-top: 15px; padding-bottom: 15px;"></div>
+<!--//////////// begin changing code -->		
+								<div id="signup">					
+											<div class="floating-div"
+												style="padding-left: 0px; padding-top: 15px; padding-bottom: 15px; text-align: left">
+												<span class='blocking-span'> <input type="text"
+													id="f_name" name="f_name" class="inputText"
+													required /> <span style="align: left"
+													class="floating-label pull-left"><b>Enter
+															First Name</b></span>
+												</span> <span class="warning" id="warning_fname"
+													style="align: left; padding-left: 0px; color: red; font-size: 80%"
+													class="pull-left"> <b>Please enter
+														First Name</b>
+												</span>
+											</div>
+											
+											<div class="floating-div"
+												style="padding-left: 0px; padding-top: 15px; padding-bottom: 15px; text-align: left">
+												<span class='blocking-span'> <input type="text"
+													id="l_name" name="l_name" class="inputText"
+													required /> <span style="align: left"
+													class="floating-label pull-left"><b>Enter
+															Last Name</b></span>
+												</span> <span class="warning" id="warning_lname"
+													style="align: left; padding-left: 0px; color: red; font-size: 80%"
+													class="pull-left"> <b>Please enter Last Name</b>
+												</span> 
+											</div>
+											
+											<div class="floating-div"
+												style="padding-left: 0px; padding-top: 15px; padding-bottom: 15px; text-align: left">
+												<span class='blocking-span'> <input type="text"
+													id="phone" name="phone" class="inputText"
+													required /> <span style="align: left"
+													class="floating-label pull-left"><b>Enter
+															Mobile number</b></span>
+												</span> <span class="warning" id="warning_phone_new"
+													style="align: left; padding-left: 0px; color: red; font-size: 80%"
+													class="pull-left"> <b>Please enter valid Mobile number</b>
+												</span>
+												
+											</div>
+											<div class="floating-div"
+												style="padding-left: 0px; padding-top: 15px; padding-bottom: 15px; text-align: left">
+												<span class='blocking-span'> <input type="text"
+													id="email" name="phone" class="email"
+													required /> <span style="align: left"
+													class="floating-label pull-left"><b>Enter
+															Email ID</b></span>
+												</span> <span class="warning" id="warning_email_new"
+													style="align: left; padding-left: 0px; color: red; font-size: 80%"
+													class="pull-left"> <b>Please enter valid email</b>
+												</span>
+												
+											</div>
+											
+								
+								<div class="floating-div"
+												style="padding-left: 0px; padding-top: 15px; padding-bottom: 15px; text-align: left">
+												<span class='blocking-span'> <input type="password"
+													id="pass_txt" name="pass_txt" class="inputText" required />
+													<span class="floating-label"><b>Set Password</b></span>
+												</span> <span class="warning" id="warning_pass_new"
+													style="align: left; padding-left: 0px; color: red; font-size: 80%"
+													class="pull-left"> <b>Enter password</b>
+												</span> 
+								</div>	
+								
+								
+								<div class="row"
+												style="padding-left: 0px; padding-top: 15px; padding-bottom: 15px;">
+												<button type="button" id="login_btn"
+													class="btn btn-primary btn-lg btn-block"
+													style="border-radius: 0px; background-color: #F26419; border-width: 0mm"
+													value="Login" onclick="signup();">SIGN UP</button>
+								</div>
+						
+								<div class="row"
+												style="padding-left: 0px; padding-top: 15px; padding-bottom: 15px;">
+												<button type="button" id=""
+													class="btn btn-primary btn-lg btn-block"
+													style="border-radius: 0px; box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); color: #2455f4; background-color: white; border-width: 0mm"
+													onclick="show_old();">Existing User? Login</button>
+											</div>	
+											
+							</div>
+<!--//////////// end changing code -->
+							<div id ="old">
 											<div class="floating-div"
 												style="padding-left: 0px; padding-top: 15px; padding-bottom: 15px; text-align: left">
 												<span class='blocking-span'> <input type="text"
@@ -148,6 +230,7 @@ input:valid ~ .floating-label {
 														registered</b>
 												</span>
 											</div>
+					
 											<div class="floating-div"
 												style="padding-left: 0px; padding-top: 15px; padding-bottom: 15px; text-align: left">
 												<span class='blocking-span'> <input type="password"
@@ -159,6 +242,8 @@ input:valid ~ .floating-label {
 												</span> <a> <span style="text-align: right">Forgot?</span>
 												</a>
 											</div>
+											
+											
 											<div class="row"
 												style="padding-left: 0px; padding-top: 15px; padding-bottom: 15px;">
 												<button type="button" id="login_btn"
@@ -168,13 +253,14 @@ input:valid ~ .floating-label {
 											</div>
 											<div class="row"
 												style="padding-left: 0px; padding-top: 15px; padding-bottom: 15px;">
-												<button type="button"
+												<button type="button" id=""
 													class="btn btn-primary btn-lg btn-block"
 													style="border-radius: 0px; box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); color: #2455f4; background-color: white; border-width: 0mm"
-													data-toggle="modal" data-dismiss="modal"
-													data-target="#signupModal">New to Flopkart? Sign
-													up</button>
+													onclick="show_signup();">New to Flopkart? Sign up</button>
 											</div>
+							</div>
+							
+									
 										</div>
 										<div class="col-sm-1">
 											<button type="button" class="close" data-dismiss="modal">x</button>
@@ -2376,14 +2462,110 @@ input:valid ~ .floating-label {
 	<script src="./bootstrapFiles/js/bootstrap-select.min.js"></script>
 	<script src="./bootstrapFiles/js/wow.min.js"></script>
 	<script src="./bootstrapFiles/js/scripts.js"></script>
+	<script src="./bootstrapFiles/js/cookies.js"></script>
 	<script>
 	$(document).ready(function()
-			{
+			{	$("#signup").hide();
 				$(".warning").hide();
-				checkCookie();				
+				checkCookie();	
+				$("#f_name").focus(function(){
+	                $('.warning').hide(); // hide error popup
+				});
+				$("#l_name").focus(function(){
+	                $('.warning').hide(); // hide error popup
+				});
+				
+				$("#phone").focus(function(){
+	                $('.warning').hide(); // hide error popup
+				});
+				$("#email").focus(function(){
+	                $('.warning').hide(); // hide error popup
+				});
+				$("#pass_txt").focus(function(){
+	                $('.warning').hide(); // hide error popup
+				});
+				
 			})
 	
-
+	
+	function show_signup()
+	{ 
+		$("#old").hide();
+		$("#signup").show();
+	}
+	
+	
+	function show_old()
+	{ 
+		$("#old").show();
+		$("#signup").hide();
+	}
+	
+	function signup() 
+    {	
+		if (!$("#f_name").val() ){
+			$("#warning_fname").show();
+			return false;
+		}
+		if (!$("#l_name").val() ){
+			$("#warning_lname").show();
+			return false;
+		}
+		
+		var email = $("#email").val();
+		var phone = $("#phone").val();
+		if ( !phone.match(/^[0-9]{10}$/))
+		{
+				$("#warning_phone_new").show();
+				return false;
+		}
+		
+		if (!$("#email").val() ){
+			$("#warning_email_new").show();
+			return false;
+		}
+		else if (!email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/))
+		{
+				$("#warning_email_new").show();
+				return false;
+		}
+		
+		if (!$("#pass_txt").val() ){
+			$("#warning_pass_new").show();
+			return false;
+		}
+		
+        var ctxPath = "<%=request.getContextPath()%>";
+		$.ajax(
+		{
+			type : 'POST',
+			contentType : 'application/json',
+			url : ctxPath + "/webapi/users/createCustomer",
+			dataType : "json", // data type of response
+			data : signupformToJSON(),
+			success : renderDetails
+		});
+	}
+	function signupformToJSON() 
+	{
+		var fname = $("#f_name").val();
+		var lname = $("#l_name").val();
+		var email = $("#email").val();
+		var password = $("#pass_txt").val();
+		var phone = $("#phone").val();
+		
+		
+		var flipkart_user = JSON.stringify({
+			"firstName":fname,
+			"lastName":lname,
+			"phone":phone,
+        		"email":email,
+        		"password":password
+        	
+        	});
+		return flipkart_user;
+	}
+	
 	function checkCookie() 
 	{
 	    var user = getCookie("user_details");
@@ -2409,46 +2591,15 @@ input:valid ~ .floating-label {
 	{
 		$(".login_user").hide();
 		$('#Login_btn').hide();
-		$('#user_btn').val("My Account");
-		$('#firstName').val(user.firstName);
-		$('#pic_URL').val(user.pic_URL);
-		$('#lastName').val(user.lastName);
-		$('#email').val(user.email);
-		$('#phone').val(user.phone);
+// 		$('#user_btn').val("My Account");
+// 		$('#firstName').val(user.firstName);
+// 		$('#pic_URL').val(user.pic_URL);
+// 		$('#lastName').val(user.lastName);
+// 		$('#email').val(user.email);
+// 		$('#phone').val(user.phone);
 		$('#user_btn').show();
 	}
-	
-	function setCookie(cname, cvalue, exminutes) 
-	{
-	    var d = new Date();
-	    d.setTime(d.getTime() + (exminutes * 60 * 1000));
-	    var expires = "expires="+d.toUTCString();
-	    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-	}
 
-	function deleteCookie(cname) 
-	{
-	    document.cookie = cname + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;path=/';
-	};
-	
-	function getCookie(cname) 
-	{
-	    var name = cname + "=";
-	    var ca = document.cookie.split(';');
-	    for(var i = 0; i < ca.length; i++) 
-	    {
-	        var c = ca[i];
-	        while (c.charAt(0) == ' ') 
-	        {
-	            c = c.substring(1);
-	        }
-	        if (c.indexOf(name) == 0) 
-	        {
-	            return c.substring(name.length, c.length);
-	        }
-	    }
-	    return "";
-	}
 		function validate() 
 		{
 			$(".warning").hide();
@@ -2510,7 +2661,7 @@ input:valid ~ .floating-label {
 			else
 			{
 				showUser(user);
-				setCookie("user_details", JSON.stringify(user), 30);
+				setCookie("user_details", JSON.stringify(user), 1);
 				$('#loginModal').modal('toggle');
 			}
 
