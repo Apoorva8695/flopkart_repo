@@ -77,7 +77,7 @@
         	<div class="cnt-account">
 				<ul class="list-unstyled">
 						<li><a href="underConstruct.html"><i class="fa fa-bell" ></i> Notification</a></li>
-						<li><a href="underConstruct.html"><i class="fa fa-check"></i> Logout</a></li>
+						<li><a href="sellerHub.jsp" onclick="logout()"><i class="fa fa-check"></i> Logout</a></li>
 					</ul>
 		 </div>
         <!-- /.cnt-account -->
@@ -341,7 +341,7 @@
 	            </div>   
 			    <div class="row">
 			      <div class="col-md-5 sidebar"> 
-		              <input type="number" class="form-control input-lg"  name="dis" id="dis"  max="99"
+		              <input type="number" class="form-control input-lg"  name="dis" id="dis" value="0"  max="99"
 		              autocomplete="name" >
 		          </div>
 		         </div> 
@@ -481,18 +481,7 @@
 <script>
 $(document).ready(function(){
 	
-	$('#sellerid').val("23");
-
-<%-- 	 <%if (request.getParameter("id") != null) {  --%>
-// 		String x = request.getParameter("id");
-// 		//out.println("Successful "+ x );
-<%--      %>  --%>
-// 		function alerting(){
-<%-- 		alert("Successful")}<% --%>
-//  	 }
-<%-- 	 else { %> --%>
-// // 	 checkCookie();	
-<%-- 	 <%}%> --%>
+ 	 checkCookie();
 		var counter = 2;
 		var c = 1;
 		$('#cnt').val(c);
@@ -540,20 +529,21 @@ $(document).ready(function(){
 		});
 		
 	})
-/* function checkCookie() 
+ function checkCookie() 
 {
-    var result = getCookie("user_details");
+    var result = getCookie("seller_details");
     var user = JSON.parse(result);
+    alert(user.id);
     if (user != "") 
     {
-		setCookie("user_details", user, 10);
+		setCookie("seller_details", user, 10);
 		sellerId(user);
     } 
     else 
     {
     	logout();
     }
-} */
+} 
 
 
 
@@ -582,7 +572,7 @@ function sellerId(user)
 
 function logout()
 {
-	deleteCookie("user_details");
+	deleteCookie("seller_details");
 }
 
 	function fetch() 
