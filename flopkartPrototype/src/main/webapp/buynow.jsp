@@ -36,6 +36,7 @@
 
 				<!-- guest-login -->			
 				<div class="col-md-6 col-sm-6 guest-login">
+				
 					<h4 class="checkout-subtitle">Register or Login</h4>
 					<h4 class="checkout-subtitle outer-top-vs">Register and save time</h4>
 					<p class="text title-tag-line ">Register with us for future convenience:</p>
@@ -201,6 +202,7 @@ function show_Welcome()
 		    	"</h4>"+
 	    	"</div>"
     	$("#login_panel").html(data);
+    	$("#shipAddress").val((JSON.parse(user)).address);
     } 
 }
 function buynowsignup()
@@ -240,6 +242,7 @@ function order_formToJSON()
 	var OrderDate = "2018-03-15";
 	var Status = "Ordered";
 	var TotalAmount =<%=total %>;
+	<%session.setAttribute("totalamount","TotalAmount");%>
 	var flopkartOrder = JSON.stringify({
 	    "shippingAddress" : shipAddress,
 	    "userId" : userid,
