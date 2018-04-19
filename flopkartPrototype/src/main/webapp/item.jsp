@@ -4,6 +4,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta property="og:url"           content="https://localhost:8080/flopkartPrototype" />
+<meta property="og:type"          content="website" />
+<meta property="og:title"         content="Your Website Title" />
+<meta property="og:description"   content="Your description" />
+<meta property="og:image"         content="https://www.your-domain.com/path/image.jpg" />
 <%@include file="metaContent.jsp"%>
 <title>Item Display</title>
 </head>
@@ -36,6 +41,14 @@
 </style>
 
 <body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.12';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 	<%@include file="header.jsp"%>
 	<div class="breadcrumb">
@@ -150,35 +163,53 @@
 							<div class='col-sm-6 col-md-7 product-info-block'>
 								<div class="product-info" id="product-info">
 									<h1 class='name' id='product_title'></h1>
-						            <div id="seller_rating" style="font-size:20px">
-						                 <span>Seller Rating:</span>
-						                 <span class='fa fa-star'></span>
-						                 <span class='fa fa-star'></span>
-						                 <span class='fa fa-star'></span>
-						                 <span class='fa fa-star'></span>
-						                 <span class='fa fa-star'></span>
+									
+									<div class="row">
+						            <div class="col-sm-4" id="seller_rating" style="padding-right:0px;">
+						                 <span style="font-size:14px">Seller Rating : </span>
+						                 <span style="font-size:16px" class='fa fa-star'></span>
+						                 <span style="font-size:16px" class='fa fa-star'></span>
+						                 <span style="font-size:16px" class='fa fa-star'></span>
+						                 <span style="font-size:16px" class='fa fa-star'></span>
+						                 <span style="font-size:16px" class='fa fa-star'></span>
 						            </div>
-						            <div id="seller_rating_unavailable" style="font-size:20px" hidden>
-						                 <span>Seller Rating:</span>
-                                         <span style="color:red">Seller currently does not have enough ratings</span> 
+						            
+						            <div class="col-sm-5" id="seller_rating_unavailable" style="font-size:14px" hidden="hidden">
+						                 <span style=" font-size:14px;">Seller Rating : </span>
+                                         <span style="color:red; font-size:14px;"> Not enough Ratings</span> 
 						            </div>
+						          <div class="col-sm-5" style="color:blue;"> 
+						          <span id="seller_rating_total" style="font-size:14px"></span>
+						            <span id="seller_rating_customers" style="font-size:14px"></span></div></div>
+						            
+						            <div class="row" style="padding-top:9px;">
+										<div class="col-sm-2" style="padding-right:0px;">
+											<span style="font-size:14px">Item id </span>
+											<div class="fb-share-button" data-href="https://www.google.co.in/?gfe_rd=cr&dcr=0&ei=wFbOWtutO-2cX9OFq-AD" data-layout="button_count" data-size="small" data-mobile-iframe="false"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+										</div>
+										<div class="col-sm-8" style="padding-left:0px;">
+											<span style="font-size:14px" id='product_id'></span>
+										</div>
+										<div class="col-sm-4" style="padding-right:0px;"></div>
+									</div>
 									<div class='stock-container info-container m-t-10'>
 										<div class='row'>
-											<div class='col-sm-2'>
-												<div class='stock-box'>
-													<span class='label'>Availability :</span>
+											<div class='col-sm-2' >
+												<div class='stock-box' style="padding-left:0px">
+													<span  style="font-size:14px">Availability </span>
 												</div>
 											</div>
-											<div class='col-sm-9'>
-												<div class='stock-box'>
-													<span style="color: red; font-size: 15px" id='available'></span>
+											<div class='col-sm-9' style="padding-left:0px">
+												<div class='stock-box' style="padding-left:0px">
+													<span style="color: red; font-size: 14px" id='available'></span>
 													<span hidden="hidden" id='available_quant'></span>
 												</div>
 											</div>
 										</div>
 									</div>
 									<div class='description-container m-t-20'
-										style="font-size: 15px" id='itemdescription'></div>
+										style="font-size: 14px " id='itemdescription'>
+									</div>
 									<div class='price-container info-container m-t-20'>
 										<div class='row'>
 											<div class='col-sm-6'>
@@ -191,8 +222,8 @@
 														<i class='fa fa-rupee-sign'></i> <span id='price-strike'></span>
 													</div>
 												</div>
-												<div style='font-size: 15px; color: blue' id='discount'></div>
-												<div style='font-size: 20px; color: purple' id='dealname'></div>
+												<div style='font-size: 14px; color: blue' id='discount'></div>
+												<div style='font-size: 15px; color: purple' id='dealname'></div>
 											</div>
 											<div class='col-sm-6'>
 												<div class='favorite-button m-t-10'>
@@ -280,20 +311,23 @@ $(document).ready(function()
 			url : ctxPath + "/webapi/listings/"+listingid,
 			dataType : "json", // data type of response
 			success : function(listing_json){
-				if(listing_json.quantity==0)
+				if(listing_json.quantity<1)
 				{
 					$("#available").text("Out of Stock");
 					$("#buynow").hide();
 					$("#addtocart").hide();
+					$("#gotocart").hide();	
+					$("#buynow_incart").hide();	
 					
 				}
 				else
 				{
-					$("#available").text("In Stock "+"("+listing_json.quantity+")");
+					$("#available").text(" : In Stock "+"("+listing_json.quantity+")");
 					$("#available_quant").text(listing_json.quantity);
 				}
 				var amount = listing_json.price - (listing_json.discount*listing_json.price/100);
 				$("#product_title").text(listing_json.listingName);
+				$("#product_id").text(" : " +listing_json.itemId);
 				$("#itemdescription").text(listing_json.description);
 				$("#discountedprice").text(amount);
 				$("#price-strike").text(listing_json.price);
@@ -325,7 +359,7 @@ $(document).ready(function()
 					dataType : "json", // data type of response
 					success : function(seller_json)
 					{
-						var sellerData = "<div id='sellerData' style='color:green; font-size:15px'>Seller name:   "+seller_json.firstName+" "+seller_json.lastName+" (id: "+listing_json.sellerid+" )</span>";
+						var sellerData = "<div id='sellerData' style='color:green; font-size:15px'>Seller name:   "+seller_json.firstName+" "+seller_json.lastName+" (id: "+seller_json.email+" )</span>";
 						$("#product-info").append(sellerData);
 						//alert(seller_json.firstName+" "+seller_json.lastName);
 						$("#sellername").val(seller_json.firstName+" "+seller_json.lastName);
@@ -389,7 +423,7 @@ function getCartId(ctxPath, itemId)
 
 function cartCheck(status) 
 {
-	if(JSON.stringify(status)!="204")
+	if(JSON.stringify(status)!="204" && ($("#available").text()!="Out of Stock"))
 	{
 		$("#addtocart").hide();
 		$("#gotocart").show();
@@ -408,7 +442,10 @@ $("#quant-up").click(function(){
 		value++;
 		$("#quantity").val(value);
 		$("#quant").val(value);
-		
+	}
+	else {
+		$("#quantwarning").text("Only "+available_quant+" items are available in stock");
+		$("#quantwarning").show();
 	}
 });
 
@@ -469,7 +506,12 @@ function getDealName(ctxPath){
 			url : ctxPath + "/webapi/deals/"+dealid,
 			dataType : "json", // data type of response
 			success : function(deal){
-				$("#dealname").text("SUPER DEAL: "+deal.dealname+"!");
+				$("#dealname").html("SUPER DEAL: "+deal.dealname+"!"+"&nbsp; &nbsp;");
+				if(deal.dealname == "15% Cashback" || deal.dealname == "50% off"){
+				}
+				else {
+					$("#dealname").append("<a class='btn btn-primary' href='offerZoneDeal.jsp?id="+dealid+"'> Avail Deal </a>");
+				}
 			},
 			error: function(){
 				//alert("error occurred"); 
@@ -540,6 +582,8 @@ function rating(ctxPath,id)
 			if(results.length==0)
 				{
 				   $("#seller_rating").hide()
+				   $('#seller_rating_total').hide()
+				   $('#seller_rating_customers').hide()
 				   $("#seller_rating_unavailable").show()
 				}
 			else
@@ -547,6 +591,10 @@ function rating(ctxPath,id)
 				   var sum=0;
 				   for(var i in results)
 					   sum=sum+results[i].stars
+				   var data = "<span> ( </span> <span>"+sum+" stars</span>";
+				   $('#seller_rating_total').append(data);
+				   data = "</span><span> / </span><span>"+results.length+" customer ratings</span> <span> ) </span>";
+				   $('#seller_rating_customers').append(data);
 				   var val = Math.round(sum/results.length);
 				   renderSeller(val);
 				}

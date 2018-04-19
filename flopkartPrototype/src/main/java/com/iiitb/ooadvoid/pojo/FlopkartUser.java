@@ -16,12 +16,22 @@ public class FlopkartUser
 	private String password;
 	private String address;
 	private Integer wallet;
+	private String secret;
 	
 	
-	
+	public String getSecret()
+	{
+		return secret;
+	}
+
+	public void setSecret(String secret)
+	{
+		this.secret = secret;
+	}
+
 	public Integer getWallet()
 	{
-		return wallet;
+		return (this.wallet == null) ? 0 : wallet;
 	}
 
 	public void setWallet(Integer wallet)
